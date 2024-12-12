@@ -2,8 +2,6 @@ using Exercise.Model;
 using Microsoft.AspNetCore.Mvc;
 using Exercise.Helper;
 using Exercise.Service;
-using Exercise.Utils;
-using Microsoft.AspNetCore.Http;
 using System.Reflection;
 
 namespace Exercise.Controllers
@@ -20,14 +18,12 @@ namespace Exercise.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Status()
         {
             return new OkResult();
         }
 
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [HttpGet]
         public IActionResult Get(GeneralRequest? req)
         {
             try
@@ -46,13 +42,13 @@ namespace Exercise.Controllers
 
                 return new OkObjectResult(magicValue);
             }
-            catch (BadHttpRequestException e)
+            catch (BadHttpRequestException ex)
             {
-                return new BadRequestObjectResult(new ExceptionResponse(e.Message));
+                return new BadRequestObjectResult(new ExceptionResponse(ex.Message));
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new ExceptionResponse(e.Message));
+                return StatusCode(StatusCodes.Status500InternalServerError, new ExceptionResponse(ex.Message));
             }
         }
 

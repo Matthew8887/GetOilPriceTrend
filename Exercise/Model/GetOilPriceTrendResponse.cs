@@ -1,7 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace Exercise.Model
 {
+    [ExcludeFromCodeCoverage]
     public class GetOilPriceTrendResponse : GeneralResponse
     {
         public GetOilPriceTrendResponse(GeneralRequest request) : base(request)

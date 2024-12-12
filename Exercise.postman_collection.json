@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "496bc7a1-bd15-4d3d-9a52-fb2130d452fb",
+		"name": "Exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29954609"
+	},
+	"item": [
+		{
+			"name": "Request_Valid",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"GetOilPriceTrend\",\r\n    \"params\": {\r\n        \"startDateISO8601\": \"2020-02-03\",\r\n        \"endDateISO8601\": \"2020-02-07\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ApiUrl}}",
+					"host": [
+						"{{ApiUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request_Valid_NoParams",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"GetOilPriceTrend\",\r\n    \"params\": { }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ApiUrl}}",
+					"host": [
+						"{{ApiUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request_MissingParams_Exception",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"GetOilPriceTrend\",\r\n    \"params\": {\r\n        \"startDateISO8601\": \"2020-02-03\",\r\n        \"endDateISO8601\": \"2020-02-07\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ApiUrl}}",
+					"host": [
+						"{{ApiUrl}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request_WrongMethod_BadRequest",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"jsonrpc\": \"2.0\",\r\n    \"method\": \"TestMethod\",\r\n    \"params\": {\r\n        \"startDateISO8601\": \"2020-02-03\",\r\n        \"endDateISO8601\": \"2020-02-07\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ApiUrl}}",
+					"host": [
+						"{{ApiUrl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "ApiUrl",
+			"value": "https://localhost:7127/api/home/get",
+			"type": "string"
+		}
+	]
+}

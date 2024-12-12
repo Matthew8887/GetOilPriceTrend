@@ -1,5 +1,4 @@
 using Exercise.Controllers;
-using Exercise.Helper;
 using Exercise.Model;
 using Exercise.Service;
 using Exercise.Utils;
@@ -44,28 +43,7 @@ namespace TestProject
                 }
             ];
         }
-
-        //[Fact]
-        //public void GetOilPriceTrend_WithValidInput_Empty()
-        //{
-        //    var homeController = new HomeController(_oilServiceMock.Object);
-
-        //    _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime?>(), It.IsAny<DateTime?>()))
-        //        .Returns(new List<OilPrice>());
-
-        //    var request = new GeneralRequest
-        //    {
-        //        Params = new object()
-        //    };
-        //    var result = homeController.GetOilPriceTrend(request);
-
-        //    // Assert
-        //    Assert.NotNull(result);
-        //    Assert.IsAssignableFrom<GetOilPriceTrendResponse>(result);
-        //    Assert.NotNull(result.Id);
-        //    Assert.NotNull(result.Result);
-        //}
-
+        
         [Fact]
         public void Get_WithValidInput_NoParams()
         {

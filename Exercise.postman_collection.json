@@ -33,7 +33,7 @@
 			"response": []
 		},
 		{
-			"name": "Request_Valid_NoParams",
+			"name": "Request_NoParams_Exception",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -59,7 +59,7 @@
 			"response": []
 		},
 		{
-			"name": "Request_MissingParams_Exception",
+			"name": "Request_MissingId_Exception",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},

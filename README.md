@@ -4,6 +4,8 @@ Download the project and run it locally. Attached, you will also find a Postman 
 
 **Personal Approach**
 
+I included an initial method called "Status" only to ensure that the solution started without initial errors.
+
 This is my first time working with the RPC protocol. I noticed that Visual Studio provides a specific template for creating a gRPC service, but due to limited time, I preferred to develop everything as a classic web API in .NET 8. 
 
 Having noticed that, in the provided example, the relevant method was passed as a parameter, I decided to use reflection to make everything more dynamic rather than using a simple if/switch statement.

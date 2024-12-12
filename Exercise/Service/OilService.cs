@@ -20,12 +20,9 @@ namespace Exercise.Service
             }
         }
 
-        public List<OilPrice> GetByDate(DateTime? startdate, DateTime? enddate)
+        public List<OilPrice> GetByDate(DateTime startdate, DateTime enddate)
         {
-            return CommonConfigVariables.ListOilPrices.Where(x =>
-                (startdate.IsNull() || x.Date >= startdate)
-                &&
-                (enddate.IsNull() || x.Date <= enddate)).ToList();
+            return CommonConfigVariables.ListOilPrices.Where(x => x.Date >= startdate && x.Date <= enddate).ToList();
         }
     }
 }

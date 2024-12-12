@@ -43,39 +43,13 @@ namespace TestProject
                 }
             ];
         }
-        
-        [Fact]
-        public void Get_WithValidInput_NoParams()
-        {
-            var homeController = new HomeController(_oilServiceMock.Object);
-
-            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime?>(), It.IsAny<DateTime?>()))
-                .Returns(new List<OilPrice>());
-
-            var request = new GeneralRequest
-            {
-                Id = 1,
-                JsonRpc = "2.0",
-                Method = "GetOilPriceTrend",
-                Params = new object()
-            };
-
-            var result = homeController.Get(request);
-
-            // Assert
-            Assert.NotNull(result);
-            Assert.IsAssignableFrom<OkObjectResult>(result);
-            Assert.NotNull(((GetOilPriceTrendResponse)((OkObjectResult)result).Value).Id);
-            Assert.NotNull(((GetOilPriceTrendResponse)((OkObjectResult)result).Value).JsonRpc);
-            Assert.NotNull(((GetOilPriceTrendResponse)((OkObjectResult)result).Value).Result);
-        }
 
         [Fact]
         public void Get_WithValidInput_WithParams()
         {
             var homeController = new HomeController(_oilServiceMock.Object);
 
-            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime?>(), It.IsAny<DateTime?>()))
+            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                 .Returns(new List<OilPrice>());
 
             var request = new GeneralRequest
@@ -100,13 +74,35 @@ namespace TestProject
             Assert.NotNull(((GetOilPriceTrendResponse)((OkObjectResult)result).Value).Result);
         }
 
-        [Theory]
-        [MemberData(nameof(WithWrongInputParameters))]
-        public void Get_WithWrongInput_GeneralException(int? id, string jsonRpc, string method)
+        [Fact]
+        public void Get_WithWrongInput_NoParams_Exception()
         {
             var homeController = new HomeController(_oilServiceMock.Object);
 
-            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime?>(), It.IsAny<DateTime?>()))
+            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
+                .Returns(new List<OilPrice>());
+
+            var request = new GeneralRequest
+            {
+                Id = 1,
+                JsonRpc = "2.0",
+                Method = "GetOilPriceTrend",
+                Params = new object()
+            };
+
+            var result = homeController.Get(request);
+
+            // Assert
+            AssertException(result);
+        }
+
+        [Theory]
+        [MemberData(nameof(WithWrongInputParameters))]
+        public void Get_WithWrongInput_Exception(int? id, string jsonRpc, string method)
+        {
+            var homeController = new HomeController(_oilServiceMock.Object);
+
+            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                 .Returns(new List<OilPrice>());
 
             var request = new GeneralRequest
@@ -128,7 +124,7 @@ namespace TestProject
         {
             var homeController = new HomeController(_oilServiceMock.Object);
 
-            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime?>(), It.IsAny<DateTime?>()))
+            _oilServiceMock.Setup(x => x.GetByDate(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                 .Returns(new List<OilPrice>());
 
             var request = new GeneralRequest
